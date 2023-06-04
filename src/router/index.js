@@ -29,6 +29,7 @@ const routes = [{
     component: LyNews
 }, {
     path: '/detail/:id',
+    name: 'detail',
     component: LyDetail
 }, {
     path: '/index',

@@ -4,17 +4,21 @@
     <div class="banbox">
       <div class="ban">
         <ul class="b-list">
-          <li v-for="item  in fashionsShow" :key="item.id">
+          <li v-for="item in fashionsShow" :key="item.id">
             <a href=""><img :src="require(`@/assets/${item.imgpath}`)" /></a>
             <div class="b-listjs">
-              <a href="#/detail">
+              <a>
                 <p>
                   {{ item.name }}
                   <i
                     class="fa fa-caret-square-o-right"
                     aria-hidden="true"
                     style="font-size: 24px"
-                  ></i>
+                  >
+                    <router-link :to="'/detail/' + item.id" class="router-link"
+                      >点击查询</router-link
+                    >
+                  </i>
                 </p>
               </a>
             </div>
@@ -37,22 +41,31 @@ export default {
     };
   },
   methods: {},
-
   components: {
     LyFooter,
     LyHeader,
   },
 
   created() {
-    this.$http.get("api/wuqi/list").then((res)=>{
+    this.$http.get("api/wuqis/list").then((res) => {
       console.log(res.data.data);
       this.fashionsShow = res.data.data;
-    })
-  }
+    });
+  },
 };
 </script>
 
 <style>
+.router-link {
+  display: inline-block;
+}
+
+.router-link a {
+  white-space: nowrap;
+}
+.goToNew {
+  font-size: 20px;
+}
 .banbox {
   width: 100%;
   height: 500px;

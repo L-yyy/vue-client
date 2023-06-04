@@ -6,7 +6,7 @@
       <div class="conbox">
         <div class="c-top">
           <div class="c-top-l">
-            <img src="../assets/wuqi/wuqi1.png" />
+            <img :src="require(`@/assets/${item.imgpath}`)" />
           </div>
           <div class="c-top-r">
             <h3>
@@ -16,7 +16,7 @@
             <p>商品属性 :{{ item.useway }}</p>
             <p>商品材质 :{{ item.cailiao }}</p>
             <p>商品源于 :{{ item.time }}</p>
-            <h4>单价:￥{{ item.onePrice }}</h4>
+            <h4>单价:￥{{ item.oneprice }}</h4>
 
             <div class="goumai">
               <input class="jia" type="button" value="+" id="jia" v-on:click="addNum" />
@@ -67,15 +67,7 @@ export default {
   name: "LyDetail",
   data() {
     return {
-      item: {
-        type: "长剑",
-        ucname: "longsword",
-        name: "冰魄",
-        useway: "近战使用",
-        cailiao: "由蓝水晶制成，长条形，前端尖，后端安有短柄，两边有刃",
-        time: "春秋末年",
-        onePrice: 1800,
-      },
+      item: {},
       skin: {
         name: "永结无间红皮",
         onePrice: 1800,
@@ -155,9 +147,13 @@ export default {
     LyFooter,
     LyHeader,
   },
+  mounted(){
 
+  },
   created() {
-    //axios请求springboot来拿数据
+    this.$http.get("api/wuqis/detail/"+this.$route.params.id).then((res) => {
+      this.item = res.data.data
+    });
   },
 };
 </script>
