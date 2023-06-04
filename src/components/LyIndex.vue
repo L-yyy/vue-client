@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LyHeader></LyHeader>
+    <LyHeader class="navhover"></LyHeader>
     <div class="box">
       <div class="logobox">
         <img id="img" :src="require('@/assets/ly/tp' + number + '.jpg')" />
@@ -19,6 +19,7 @@ export default {
   name: "LyIndex",
   data() {
     return {
+      idx: 1,
       number: 1,
       picture: "",
     };
@@ -48,17 +49,20 @@ export default {
   },
 
   created() {
-    this.$http.get("api/shouye/list").then((res)=>{
+    this.$http.get("api/shouye/list").then((res) => {
       console.log(res.data.data);
       this.number = res.data.data.number;
       this.picture = res.data.data.imgpath;
-    })
-  }
+    });
+  },
 };
 </script>
 
 <style>
-.box{
+.navhover {
+  background-position: 0px 0px !important;
+}
+.box {
   height: 550px;
 }
 .logobox {

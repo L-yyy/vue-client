@@ -11,11 +11,11 @@
     <div class="navbox">
       <nav class="nav">
         <ul>
-          <li class="navhover"><a href="index.html">首页</a></li>
-          <li><a href="#/goumai">周边购买</a></li>
-          <li><a href="#/jiesao">永结简介</a></li>
-          <li><a href="#/news">新闻消息</a></li>
-          <li><a href="#/lxwm">联系我们</a></li>
+          <li v-bind:class="{ 'navhover': isActive1 }" v-on:click="changeStatus1"><a href="#/">首页</a></li>
+          <li v-bind:class="{ 'navhover': isActive2 }" v-on:click="changeStatus2"><a href="#/goumai">周边购买</a></li>
+          <li v-bind:class="{ 'navhover': isActive3 }" v-on:click="changeStatus3"><a href="#/jiesao">永结简介</a></li>
+          <li v-bind:class="{ 'navhover': isActive4 }" v-on:click="changeStatus4"><a href="#/news">新闻消息</a></li>
+          <li v-bind:class="{ 'navhover': isActive5 }" v-on:click="changeStatus5"><a href="#/lxwm">联系我们</a></li>
         </ul>
       </nav>
     </div>
@@ -25,6 +25,52 @@
 <script>
 export default {
   name: "LyHeader",
+  data() {
+    return {
+      isActive1: false,
+      isActive2: false,
+      isActive3: false,
+      isActive4: false,
+      isActive5: false
+    };
+  },
+  methods: {
+    changeStatus1(){
+      this.isActive1 = true
+      this.isActive2 = false
+      this.isActive3 = false
+      this.isActive4 = false
+      this.isActive5 = false
+    },
+    changeStatus2(){
+      this.isActive2 = true
+      this.isActive1 = false
+      this.isActive3 = false
+      this.isActive4 = false
+      this.isActive5 = false
+    },
+    changeStatus3(){
+      this.isActive3 = true
+      this.isActive1 = false
+      this.isActive2 = false
+      this.isActive4 = false
+      this.isActive5 = false
+    },
+    changeStatus4(){
+      this.isActive4 = true
+      this.isActive1 = false
+      this.isActive2 = false
+      this.isActive3 = false
+      this.isActive5 = false
+    },
+    changeStatus5(){
+      this.isActive5 = true
+      this.isActive1 = false
+      this.isActive2 = false
+      this.isActive3 = false
+      this.isActive4 = false
+    }
+  },
 };
 </script>
 

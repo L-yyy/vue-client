@@ -32,6 +32,7 @@ export default {
   name: "LyGoumai",
   data() {
     return {
+      idx: 2,
       fashionsShow: [],
     };
   },

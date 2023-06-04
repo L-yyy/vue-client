@@ -38,6 +38,7 @@ export default {
   name: "LyNews",
   data() {
     return {
+      idx: 4,
       news: [],
     };
   },

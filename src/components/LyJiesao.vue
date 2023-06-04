@@ -124,6 +124,7 @@ export default {
   name: "LyJiesao",
   data() {
     return {
+      idx: 3,
       jiesaos: [],
     };
   },
