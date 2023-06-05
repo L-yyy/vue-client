@@ -123,15 +123,11 @@ html {
   font-family: Arial;
   width: 109px;
   height: 50px;
-  border-width: 8px;
+  border-radius: 15px;
+  border: #44c767 3px solid;
   color: #fff;
   border-color: #18ab29;
   font-weight: bold;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  text-shadow: 1px 1px 0px #2f6627;
   background: #44c767;
 }
 
@@ -146,18 +142,14 @@ html {
   text-align: center;
   line-height: 52px;
   font-size: 15px;
+  border-radius: 15px;
+  border: #44c767 3px solid;
   font-family: Arial;
   width: 107px;
   height: 50px;
-  border-width: 8px;
   color: #fff;
   border-color: #18ab29;
   font-weight: bold;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  text-shadow: 1px 1px 0px #2f6627;
   background: #44c767;
 }
 

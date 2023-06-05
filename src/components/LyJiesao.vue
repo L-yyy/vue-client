@@ -2,7 +2,9 @@
   <div>
     <LyHeader></LyHeader>
     <div class="container_body">
-      <a href="https://cloudgame.ds.163.com/yjwj?utm_source=yjwjfab" class="hui"
+      <a
+        href="https://cloudgame.ds.163.com/yjwj?utm_source=yjwjfab"
+        class="goToGame"
         >开始游戏</a
       >
       <div class="conbox">
@@ -145,13 +147,25 @@ export default {
 </script>
 
 <style>
-.container_body{
+.container_body {
   margin-top: 20px;
 }
-.hui {
+.goToGame {
   position: fixed;
-  right: 0;
-  bottom: 0;
+  left: 1400px;
+  top: 580px;
+  background-color: #26e03c;
+  color: #ffffff;
+  font-size: 17px;
+  size: #ffffff;
+  border-radius: 15px;
+  width: 100px;
+  height: 42px;
+  border: #21c734 2px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .mianbao {
   width: 1200px;

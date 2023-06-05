@@ -12,11 +12,8 @@
           <li><a href="#/jiesao">永结简介</a></li>
           <li><a href="#/news">新闻消息</a></li>
         </ul>
-        <p class="f-sj">我身无拘<br /><span>武道无极</span></p>
-        <img
-          src="../assets/foot-logo.jpg"
-          style="position: absolute; bottom: 10px; right: 30px"
-        />
+        <p class="f-sj">我身无拘<br /><span>武道无穷</span></p>
+        <img src="../assets/foot-logo.jpg" class="footer"/>
       </div>
     </div>
   </div>
@@ -29,6 +26,12 @@ export default {
 </script>
 
 <style>
+.footer {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  border-radius: 15px;
+}
 .footbox {
   margin-top: 20px;
   width: 100%;
