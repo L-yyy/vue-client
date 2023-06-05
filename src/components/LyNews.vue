@@ -19,7 +19,11 @@
               <p class="wen-bt">{{ item.title }}</p>
               <div class="new-hover">
                 <p>{{ item.hovertext }}</p>
-                <a :href="item.detailLink">查看详情</a>
+                <a href="">
+                  <router-link :to="'/detail/' + item.id" class="rl"
+                    >查看详情</router-link
+                  ></a
+                >
               </div>
             </li>
           </ul>
@@ -38,11 +42,18 @@ export default {
   name: "LyNews",
   data() {
     return {
-      idx: 4,
+      isModalVisible: false,
+      selectedVideoPath: "",
+
       news: [],
     };
   },
-  methods: {},
+  methods: {
+    showModal(videoPath) {
+      this.isModalVisible = true;
+      this.selectedVideoPath = videoPath;
+    },
+  },
 
   components: {
     LyFooter,
@@ -59,7 +70,10 @@ export default {
 </script>
 
 <style>
-.container_body{
+.rl{
+  color: rgb(255, 59, 59);
+}
+.container_body {
   margin-top: 20px;
 }
 .newsbox {

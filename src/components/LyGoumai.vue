@@ -9,7 +9,7 @@
             <div class="b-listjs">
               <a>
                 <p>
-                  {{ item.name }}
+                  <a class="wuQiName">{{ item.name }}</a>
                   <i
                     class="fa fa-caret-square-o-right"
                     aria-hidden="true"
@@ -56,8 +56,25 @@ export default {
 </script>
 
 <style>
+.wuQiName{
+  width: 150px;
+  height: 20px;
+  color: rgb(255, 255, 255);
+  margin-left: -59px;
+  margin-top: 40px;
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  
+}
 .router-link {
-  display: inline-block;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  margin-top: 75px;
+  margin-left: -15px;
+  font-size: 15px;
+  color: rgb(255, 189, 91);
 }
 
 .router-link a {

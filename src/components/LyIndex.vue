@@ -19,7 +19,6 @@ export default {
   name: "LyIndex",
   data() {
     return {
-      idx: 1,
       number: 1,
       picture: "",
     };

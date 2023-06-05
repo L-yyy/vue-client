@@ -27,7 +27,6 @@ export default {
   name: "LyLxwm",
   data() {
     return {
-      idx: 5,
       lxwm: [],
     };
   },
