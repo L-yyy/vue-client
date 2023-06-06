@@ -3,7 +3,7 @@
     <div class="topbox">
       <div class="top">
         <a href="index.html">
-          <img src="../assets/wuqi/yjj.png" class="top-logo" />
+          <img src="../assets/wuqi/yjj1.png" class="top-logo" />
         </a>
 
         <div class="login">
@@ -44,11 +44,37 @@
     </div>
 
     <div v-if="isUserLogin" class="userLogin">
-      <div>登录</div>
-      <div>111</div>
+      <div class="dlTitle">登录</div>
       <div>
-        <div>确认</div>
-        <div>取消</div>
+        <div class="zhangHao">
+          账号&nbsp;:&nbsp;<input
+            type="text"
+            v-model="zhangHao"
+            placeholder="请输入账号"
+            @change="chargeZhangHao"
+          />
+        </div>
+        <div class="miMa">
+          密码&nbsp;:&nbsp;<input
+            type="password"
+            v-model="miMa"
+            placeholder="请输入密码"
+          />
+        </div>
+        <div class="yanZhengMa">
+          <input
+            class="yanZhengMaInput"
+            type="text"
+            v-model="yanZM"
+            placeholder="请输入验证码"
+            @change="chargeYZM"
+          />
+          <button class="huoQuYanZM">获取验证码</button>
+        </div>
+      </div>
+      <div class="queRenQuXiao">
+        <div class="queRen">确认</div>
+        <div class="quXiao" v-on:click="quXiao">取消</div>
       </div>
     </div>
   </div>
@@ -59,8 +85,11 @@ export default {
   name: "LyHeader",
   data() {
     return {
+      zhangHao: "",
+      miMa: "",
+      yanZM: "",
       isLogin: true,
-      isUserLogin: true,
+      isUserLogin: false,
       isActive1: false,
       isActive2: false,
       isActive3: false,
@@ -69,6 +98,23 @@ export default {
     };
   },
   methods: {
+    chargeYZM(){
+      const reg = /^\d{4}$/;
+      if (!reg.test(this.yanZM)) {
+        alert("请输入4位的验证码");
+        this.yanZM = "";
+      }
+    },
+    chargeZhangHao() {
+      const reg = /^\d{11}$/;
+      if (!reg.test(this.zhangHao)) {
+        alert("请输入11位的账号");
+        this.zhangHao = "";
+      }
+    },
+    quXiao() {
+      this.isUserLogin = false;
+    },
     userLogin() {
       this.isUserLogin = true;
     },
@@ -115,17 +161,100 @@ export default {
 </script>
 
 <style>
+.huoQuYanZM {
+  position: absolute;
+  top: 237px;
+  left: 255px;
+}
+.huoQuYanZM:hover {
+  cursor: pointer;
+}
+.yanZhengMaInput {
+  width: 90px;
+  position: absolute;
+  top: 230px;
+  left: 143px;
+}
+.queRen {
+  background-color: rgb(255, 136, 0);
+  color: #fff;
+  font-weight: bold;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+.queRen:hover {
+  cursor: pointer;
+}
+.quXiao {
+  background-color: rgb(255, 136, 0);
+  color: #fff;
+  font-weight: bold;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.quXiao:hover {
+  cursor: pointer;
+}
+input {
+  height: 20px;
+  width: 170px;
+  margin: 3px;
+  padding: 3px;
+}
+.dlTitle {
+  position: absolute;
+  top: 45px;
+  font-weight: bold;
+  font-size: 25px;
+}
+.zhangHao {
+  position: absolute;
+  top: 140px;
+  left: 100px;
+  font-weight: bold;
+  font-size: 15px;
+}
+.miMa {
+  position: absolute;
+  top: 180px;
+  left: 100px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
 .userLogin {
-  background-color: rgb(192, 192, 192);
+  background-color: #f5f5f5;
   position: fixed;
-  top: 170px;
-  left: 550px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 400px;
-  height: 500px;
+  height: 400px;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.userLogin:nth-child(n) {
+  margin: 15px;
+  padding: 15px;
+}
+.queRenQuXiao {
+  display: flex;
+  position: absolute;
+  top: 300px;
 }
 .login {
   /* background-color: rgb(214, 214, 214); */
@@ -142,6 +271,8 @@ export default {
   border-radius: 50px;
   width: 50px;
   height: 50px;
+  margin-right: -45px;
+  border: 2px rgb(255, 166, 0) solid;
 }
 .dengluzhuce {
   font-weight: bold;
@@ -165,9 +296,14 @@ export default {
 }
 .pkt {
   font-size: 18px;
+  font-weight: bold;
 }
 .tc {
   color: rgb(185, 0, 0);
+  position: absolute;
+  top: 45px;
+  right: -10px;
+  font-weight: bold;
 }
 .tc:hover {
   cursor: pointer;

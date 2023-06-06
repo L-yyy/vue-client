@@ -85,7 +85,8 @@ export default {
 }
 .banbox {
   width: 100%;
-  height: 500px;
+  height: 510px;
+  margin-bottom: -20px;
   /* background-image: url(../images/chanpin/banner-bg.jpg); */
   background-image: url(../assets/ly/bj7.jpg);
   background-repeat: no-repeat;
