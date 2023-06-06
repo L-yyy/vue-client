@@ -1,7 +1,7 @@
 <template>
   <div>
     <LyHeader></LyHeader>
-    <div class="container_body">
+    <div class="container_bodylxwm">
       <div class="conbox">
         <ul class="lxxq">
           <li>联系方式：</li>
@@ -47,9 +47,10 @@ export default {
 </script>
 
 <style>
-.container_body{
+.container_bodylxwm{
   margin-top: 30px;
   margin-bottom: 30px;
+  height: 450px;
 }
 .conbox {
   width: 1200px;
