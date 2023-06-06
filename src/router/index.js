@@ -9,6 +9,7 @@ import LyJiesao from "../components/LyJiesao"
 import LyNews from "../components/LyNews"
 import LyDetail from "../components/LyDetail"
 import LyIndex from "../components/LyIndex"
+import LyNewdetail from "../components/LyNewdetail"
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,9 @@ const routes = [{
 }, {
     path: '/index',
     component: LyIndex
+}, {
+    path: '/newdetail/:id',
+    component: LyNewdetail
 }]
 
 const router = new VueRouter({

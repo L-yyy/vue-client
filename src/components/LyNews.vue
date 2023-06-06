@@ -20,7 +20,7 @@
               <div class="new-hover">
                 <p>{{ item.hovertext }}</p>
                 <a href="">
-                  <router-link :to="'/detail/' + item.id" class="rl"
+                  <router-link :to="'/newdetail/' + item.id" class="rl"
                     >查看详情</router-link
                   ></a
                 >
@@ -42,9 +42,6 @@ export default {
   name: "LyNews",
   data() {
     return {
-      isModalVisible: false,
-      selectedVideoPath: "",
-
       news: [],
     };
   },
@@ -72,6 +69,9 @@ export default {
 <style>
 .rl{
   color: rgb(255, 59, 59);
+  width: 60px;  
+  height: 60px;
+  margin-top: 50px;
 }
 .container_body {
   margin-top: 20px;
