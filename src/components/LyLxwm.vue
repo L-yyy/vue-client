@@ -9,7 +9,7 @@
           <li>地址：{{ lxwm[0].place }}</li>
           <li>邮编：{{ lxwm[0].youbian }}</li>
           <li>邮箱：{{ lxwm[0].youxiang }}</li>
-          <li>我的开源地址：<br />{{ lxwm[0].kaiyuan }}</li>
+          <li>详细地址：<br />{{ lxwm[0].kaiyuan }}</li>
         </ul>
         <div>
           <img src="../assets/lxwm/ditu3.png" />

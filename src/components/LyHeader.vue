@@ -8,7 +8,7 @@
 
         <div class="login">
           <div class="user" v-if="isLogin">
-            <img class="img" src="../assets/a.jpg" />
+            <img class="img" :src="require(`@/assets/a.jpg`)" />
             <div class="username">
               <div class="pkt">派克特&nbsp;&nbsp;&nbsp;</div>
               <div class="tc" v-on:click="tuiChu">退出</div>
@@ -48,16 +48,18 @@
       <div>
         <div class="zhangHao">
           账号&nbsp;:&nbsp;<input
+            class="input"
             type="text"
-            v-model="zhangHao"
-            placeholder="请输入账号"
+            v-model="login.user.phone"
+            placeholder="请输入手机号"
             @change="chargeZhangHao"
           />
         </div>
         <div class="miMa">
           密码&nbsp;:&nbsp;<input
+            class="input"
             type="password"
-            v-model="miMa"
+            v-model="login.user.password"
             placeholder="请输入密码"
           />
         </div>
@@ -65,15 +67,15 @@
           <input
             class="yanZhengMaInput"
             type="text"
-            v-model="yanZM"
+            v-model="login.code"
             placeholder="请输入验证码"
             @change="chargeYZM"
           />
-          <button class="huoQuYanZM">获取验证码</button>
+          <button class="huoQuYanZM" v-on:click="huoQuYZM">获取验证码</button>
         </div>
       </div>
       <div class="queRenQuXiao">
-        <div class="queRen">确认</div>
+        <div class="queRen" v-on:click="queRen">确认</div>
         <div class="quXiao" v-on:click="quXiao">取消</div>
       </div>
     </div>
@@ -81,14 +83,16 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "LyHeader",
   data() {
     return {
-      zhangHao: "",
-      miMa: "",
-      yanZM: "",
-      isLogin: true,
+      login: {
+        code: "",
+        user: { phone: "", password: "" },
+      },
+      isLogin: false,
       isUserLogin: false,
       isActive1: false,
       isActive2: false,
@@ -98,18 +102,46 @@ export default {
     };
   },
   methods: {
-    chargeYZM(){
+    queRen() {
+      axios
+        .post("api/user/submit", this.login)
+        .then((response) => {
+          console.log(response.data);
+          if (response.data.code == 200) {
+            this.isLogin = true;
+            this.isUserLogin = false;
+          } else if (response.data.code == 500) {
+            alert(response.data.msg);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    huoQuYZM() {
+      axios
+        .post("api/user/sendMsg", {
+          phone: this.login.user.phone,
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    chargeYZM() {
       const reg = /^\d{4}$/;
-      if (!reg.test(this.yanZM)) {
+      if (!reg.test(this.login.code)) {
         alert("请输入4位的验证码");
-        this.yanZM = "";
+        this.login.code = "";
       }
     },
     chargeZhangHao() {
       const reg = /^\d{11}$/;
-      if (!reg.test(this.zhangHao)) {
+      if (!reg.test(this.login.user.phone)) {
         alert("请输入11位的账号");
-        this.zhangHao = "";
+        this.login.user.phone = "";
       }
     },
     quXiao() {
@@ -204,7 +236,7 @@ export default {
 .quXiao:hover {
   cursor: pointer;
 }
-input {
+.input {
   height: 20px;
   width: 170px;
   margin: 3px;

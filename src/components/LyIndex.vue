@@ -132,6 +132,7 @@ html {
 
 .bt1:hover {
   background: #5cbf2a;
+  cursor: pointer;
 }
 
 .bt2 {
@@ -154,6 +155,7 @@ html {
 
 .bt2:hover {
   background: #5cbf2a;
+  cursor: pointer;
 }
 
 .tab1 {

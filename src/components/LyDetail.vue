@@ -10,7 +10,9 @@
           </div>
           <div class="c-top-r">
             <h3>
-              永结无间：{{ item.type }}周边<br /><small>Eternal Knot: {{item.ucname}}skin</small>
+              永结无间：{{ item.type }}周边<br /><small
+                >Eternal Knot: {{ item.ucname }}skin</small
+              >
             </h3>
             <p>商品名称 :{{ item.name }}</p>
             <p>商品属性 :{{ item.useway }}</p>
@@ -19,25 +21,55 @@
             <h4>单价:￥{{ item.oneprice }}</h4>
 
             <div class="goumai">
-              <input class="jia" type="button" value="+" id="jia" v-on:click="addNum" />
+              <input
+                class="jia"
+                type="button"
+                value="+"
+                id="jia"
+                v-on:click="addNum"
+              />
               <!-- <button v-on:click="addNum" id="jia">+</button> -->
-              <input type="text" value="1" id="sltxt" class="number" v-model="skin.nums" @input="handleChange"/>
-              <input class="jian" type="button" value="-" id="jian" v-on:click="jianNum" />
+              <input
+                type="text"
+                value="1"
+                id="sltxt"
+                class="number"
+                v-model="skin.nums"
+                @input="handleChange"
+              />
+              <input
+                class="jian"
+                type="button"
+                value="-"
+                id="jian"
+                v-on:click="jianNum"
+              />
               <!-- <button v-on:click="jianNum" id="jian">-</button> -->
-              <input class="goToShopingcar" type="button" value="加入购物车" v-on:click="gwc" />
-              <input class="goumai" type="button" value="立即购买" v-on:click="mai" />
+              <input
+                class="goToShopingcar"
+                type="button"
+                value="加入购物车"
+                v-on:click="gwc"
+              />
+              <input
+                class="goumai"
+                type="button"
+                value="立即购买"
+                v-on:click="mai"
+              />
 
               <img
+                class="zfImg"
                 v-if="this.skin.isMai === true"
                 src="../assets/ly/zftp.jpg"
               />
               <li>
                 <a
+                  class="zfText"
                   v-if="this.skin.isMai === true"
                   v-on:click="zf"
                   src="images/ly/zftp.jpg"
-                  class="zf"
-                  >扫码支付,支付完成点击此处</a
+                  >点击模拟调用支付接口完成支付</a
                 >
               </li>
             </div>
@@ -70,7 +102,7 @@ export default {
       item: {},
       skin: {
         name: "永结无间红皮",
-        onePrice: 1800,
+        onePrice: 0,
         nums: 1,
         isMai: false,
         isGWC: false,
@@ -80,7 +112,11 @@ export default {
   },
   methods: {
     handleChange() {
-      if (this.skin.nums <= 0 || this.skin.nums == null || this.skin.nums == "") {
+      if (
+        this.skin.nums <= 0 ||
+        this.skin.nums == null ||
+        this.skin.nums == ""
+      ) {
         this.skin.nums = 1;
         alert("至少选择1份！");
       }
@@ -89,10 +125,10 @@ export default {
       this.skin.nums++;
     },
     jianNum() {
-      if (this.skin.nums >1) {
+      if (this.skin.nums > 1) {
         this.skin.nums--;
-      }else{
-        alert("不能再减少了哦！")
+      } else {
+        alert("不能再减少了哦！");
       }
     },
     qi() {
@@ -147,37 +183,50 @@ export default {
     LyFooter,
     LyHeader,
   },
-  mounted(){
-
-  },
+  mounted() {},
   created() {
-    this.$http.get("api/wuqis/detail/"+this.$route.params.id).then((res) => {
-      this.item = res.data.data
+    this.$http.get("api/wuqis/detail/" + this.$route.params.id).then((res) => {
+      this.item = res.data.data;
+      this.skin.onePrice = res.data.data.oneprice
     });
   },
 };
 </script>
 
 <style>
-.jia{
+.zfText{
+  position: absolute;
+  top: 650px;
+  right:  205px;
+  color: #ff0000;
+}
+.zfText:hover {
+  cursor: pointer;
+}
+.zfImg {
+  position: absolute;
+  top: 400px;
+  right: 200px;
+}
+.jia {
   width: 20px;
   height: 20px;
 }
-.jian{
+.jian {
   width: 20px;
   height: 20px;
 }
-.goumai{
+.goumai {
   margin-left: 5px;
 }
-.goToShopingcar{
+.goToShopingcar {
   margin-left: 20px;
 }
-.number{
+.number {
   width: 30px;
   text-align: center;
 }
-.goumai{
+.goumai {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -185,6 +234,7 @@ export default {
   width: 1200px;
   height: auto;
   margin: auto;
+  margin-bottom: 100px;
 }
 
 .c-top {
